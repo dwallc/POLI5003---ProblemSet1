@@ -28,6 +28,7 @@ data.key
 
 
 <<label=Answer1>>=
+summary(mex$PRDfeel)
 
 @
 
