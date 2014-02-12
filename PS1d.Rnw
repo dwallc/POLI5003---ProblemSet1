@@ -44,7 +44,8 @@ summary(m1)
 \item Suppose we hypothesize that respondents' feelings toward the PRD were also a function of their own ideological positions, their assessments of how well the PRI had governed lately, and their personal characteristics.  Is our `two-step politics' hypothesis still supported when these factors are taken into account?  \\
 
 <<label=Answer3>>=
-
+m2 <- lm(PRDfeel ~ PANfeel + rightide + econpers + econnat + corrupt + crime + female + ses + churchatt, data=mex)
+summary(m2)
 @
 
 
