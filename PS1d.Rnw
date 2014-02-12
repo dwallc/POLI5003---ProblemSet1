@@ -52,7 +52,9 @@ summary(m2)
 \item Based on this model, which variable had the strongest estimated effect on respondents' feelings toward the PRD?  \\
 
 <<label=Answer4>>=
-
+library(arm)
+m3 <- standardize(m2)
+summary(m3)
 @
 
 \end{enumerate}
