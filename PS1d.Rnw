@@ -54,23 +54,13 @@ summary(m2)
 
 <<label=Answer4>>=
 # Calculating maximum effects via range
-mex.keep <- mex
-mex.keep$PRIfeel <- NULL
-mex.keep$prefPRI <- NULL
-mex.keep$prefPAN <- NULL
-mex.keep$PRDfeel <- NULL
-mex.range <- apply(mex.keep[,1:9], 2, function(x) max(x) - min(x))
+mex.range <- apply(mex[,c(2,6:13)], 2, function(x) max(x) - min(x))
 mex.range
 max.effects <- mex.range * m2$coef[2:10]
 max.effects
 
 # Calculating maximum effects via range of 2 standard deviations
-mex.keep <- mex
-mex.keep$PRIfeel <- NULL
-mex.keep$prefPRI <- NULL
-mex.keep$prefPAN <- NULL
-mex.keep$PRDfeel <- NULL
-mex.range.2sd <- apply(mex.keep[,1:9], 2, function(x) 2*sd(x)) 
+mex.range.2sd <- apply(mex[,c(2,6:13)], 2, function(x) 2*sd(x)) 
 mex.range.2sd
 sd2.effects <- mex.range.2sd * m2$coef[2:10]
 sd2.effects
