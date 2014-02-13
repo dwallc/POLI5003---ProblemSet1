@@ -44,7 +44,8 @@ summary(m1)
 \item Suppose we hypothesize that respondents' feelings toward the PRD were also a function of their own ideological positions, their assessments of how well the PRI had governed lately, and their personal characteristics.  Is our `two-step politics' hypothesis still supported when these factors are taken into account?  \\
 
 <<label=Answer3>>=
-m2 <- lm(PRDfeel ~ PANfeel + rightide + econpers + econnat + corrupt + crime + female + ses + churchatt, data=mex)
+m2 <- lm(PRDfeel ~ PANfeel + rightide + econpers + econnat 
+         + corrupt + crime + female + ses + churchatt, data=mex)
 summary(m2)
 @
 
@@ -52,9 +53,27 @@ summary(m2)
 \item Based on this model, which variable had the strongest estimated effect on respondents' feelings toward the PRD?  \\
 
 <<label=Answer4>>=
-library(arm)
-m3 <- standardize(m2)
-summary(m3)
+# Calculating maximum effects via range
+mex.keep <- mex
+mex.keep$PRIfeel <- NULL
+mex.keep$prefPRI <- NULL
+mex.keep$prefPAN <- NULL
+mex.keep$PRDfeel <- NULL
+mex.range <- apply(mex.keep[,1:9], 2, function(x) max(x) - min(x))
+mex.range
+max.effects <- mex.range * m2$coef[2:10]
+max.effects
+
+# Calculating maximum effects via range of 2 standard deviations
+mex.keep <- mex
+mex.keep$PRIfeel <- NULL
+mex.keep$prefPRI <- NULL
+mex.keep$prefPAN <- NULL
+mex.keep$PRDfeel <- NULL
+mex.range.2sd <- apply(mex.keep[,1:9], 2, function(x) 2*sd(x)) 
+mex.range.2sd
+sd2.effects <- mex.range.2sd * m2$coef[2:10]
+sd2.effects
 @
 
 \end{enumerate}
