@@ -48,6 +48,7 @@ m2 <- lm(PRDfeel ~ PANfeel + rightide + econpers + econnat
          + corrupt + crime + female + ses + churchatt, data=mex)
 summary(m2)
 @
+The test restult supports the hypothesis. Those who feel positively toward PAN tend to also feel positively toward PRD. One point increase in PANfeel variable leads to about 2.56 point increase in PRDfeel.
 
 
 \item Based on this model, which variable had the strongest estimated effect on respondents' feelings toward the PRD?  \\
