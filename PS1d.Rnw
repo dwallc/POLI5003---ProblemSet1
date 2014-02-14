@@ -51,7 +51,6 @@ m2 <- lm(PRDfeel ~ PANfeel + rightide + econpers + econnat
          + corrupt + crime + female + ses + churchatt, data=mex)
 summary(m2)
 @
-The test restult supports the hypothesis. Those who feel positively toward PAN tend to also feel positively toward PRD. One point increase in PANfeel variable leads to about 2.56 point increase in PRDfeel.
 
   In order to determine whether the results of the model support the 'two-step politics' hypothesis, we first had to operationalize the respondents' "own ideological positions, their assessments of how well the PRI had governed lately, and their personal characteristics." The variable \texttt{righttide} represents respondents' own ideological positions. We included the variables \texttt{econpers}, \texttt{econnat}, \texttt{corrupt}, and \texttt{crime} to represent respondents' feelings toward the PRI's governing. Finally, the variables \texttt{ses} and \texttt{churchatt} represents the personal characteristics of the respondents.
   
@@ -60,7 +59,6 @@ The test restult supports the hypothesis. Those who feel positively toward PAN t
   Finally, in regards to the personal characteristics of the respondents, the variable \texttt{female} had a p-value below $\alpha=0.01$ (0.005), with female respondents less likely to express support for the PRD, holding all other variables constant. The variable \texttt{ses} had a p-value of approximately 0.002, with more "well-off" respondents less likely to express support for the PRD, when all other variables remain constant. Finally, \texttt{churchatt} is statistically insignificant, with a p-value well over $\alpha=0.05$, with church attenders more likely to support the PRD than non-church attenders, holding all other variables constant.
   
 \item Based on this model, which variable had the strongest estimated effect on respondents' feelings toward the PRD?  \\
-
 
 <<label=Answer4>>=
 # Calculating maximum effects via range
@@ -75,7 +73,6 @@ mex.range.2sd
 sd2.effects <- mex.range.2sd * m2$coef[2:10]
 sd2.effects
 @
-If you guys want to go with max effect strategy, we might need to simulate the result.
 
 We utilized two different calculations to determine which variable had the strongest estimated effect on respondents' feelings toward the PRD. The first calculation involved calculating the range of each independent variable included in the model, and multiplying the range by the estimated estimated coefficient value for each independent variable. The second calculation involved calculating the standard deviation for each independent variable, multiplying these values by 2, and then multiplying this new set of numbers by the estimated coefficient value for each independent variable. In both calculations, we achieve the same results. According to the output, \texttt{PANfeel} has the strongest estimated effect on respondents' feelings toward the PRD ($\mbox{Maximum effect via range}=3.089$; $\mbox{Maximum effect via range of 2 SDs}=1.766$).
 
