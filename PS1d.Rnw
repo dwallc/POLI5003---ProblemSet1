@@ -31,7 +31,8 @@ data.key
 summary(mex$PRDfeel)
 table(mex$PRDfeel)
 @
-    The range of the variable, \texttt{PRDfeel}, is 10. The mode, and median, of \texttt{PRDfeel} is 5 while the mean is 4.31.
+   
+   The range of the variable, \texttt{PRDfeel}, is 10. The mode, and median, of \texttt{PRDfeel} is 5 while the mean is 4.31.
 
 
 \item The PRD positions itself to the left of the PRI, while the PAN is an unabashedly right-wing party.  Many scholars of Mexican politics argue, however, that Mexicans engage in a two-step process when thinking about politics, asking themselves first whether they support the PRI, and then, if not, choosing between the PRI's opponents.  This suggests that despite the ideological differences between the two parties, those who feel positively toward the PAN will also feel positively toward the PRD.  Is this hypothesis supported by a simple regression of \texttt{PRDfeel}?  How do you know?  Describe the estimated effect of feelings toward the PAN on feelings toward the PRD.  \\
@@ -41,6 +42,8 @@ m1 <- lm(PRDfeel ~ PANfeel, data=mex)
 summary(m1)
 @
 
+  Based on the output, and because the p-value for $\beta_{\texttt{PANfeel}}$ is below $\alpha=0.001$, there appears to be conclusive evidence supporting the hypothesis that individuals who feel positively toward the PAN will also feel positively toward the PRD. Because $\beta_{\texttt{PANfeel}}\approx0.299$, for every one unit increase in respondents' feelings toward the PAN, we should expect to see almost a 0.3 unit increase in respondents' feelings toward the PRD. In other words, if individuals have positive feelings towards one of the PRI's opponents, then these same individuals will have positive feelings towards the other PRI opponent as well.
+  
 \item Suppose we hypothesize that respondents' feelings toward the PRD were also a function of their own ideological positions, their assessments of how well the PRI had governed lately, and their personal characteristics.  Is our `two-step politics' hypothesis still supported when these factors are taken into account?  \\
 
 <<label=Answer3>>=
@@ -49,6 +52,9 @@ m2 <- lm(PRDfeel ~ PANfeel + rightide + econpers + econnat
 summary(m2)
 @
 
+  In order to determine whether the results of the model support the 'two-step politics' hypothesis, we first had to operationalize the respondents' "own ideological positions, their assessments of how well the PRI had governed lately, and their personal characteristics." The variable \texttt{righttide} represents respondents' own ideological positions. We included the variables \texttt{econpers}, \texttt{econnat}, \texttt{corrupt}, and \texttt{crime} to represent respondents' feelings toward the PRI's governing. Finally, the variables \textt{ses} and \texttt{churchatt} represents the personal characteristics of the respondents.
+  
+  Based on the results of this regression model, there still appers to be support for the 'two-step politics' hypothesis. First, the variable \texttt{PANfeel} maintains its p-value and coefficient direction from the previous model, holding all other variables constant. Second,  the p-value for \texttt{rightide} is below $\alpha=0.01$ and the direction of $\beta_{rightide}$ is expected. In other words, the more conservative respondents are, the less likely they are to support the PRD, holding all other variables constant. Third, the coefficients for the variables \texttt{econpers}, and \texttt{econnat}, are expected (as the respondents view the economy favoribly, support for the PRD decreases) when the other variables remain constant, yet these variables are considered statistically insignificant (p-values of 0.163 and 0.512 respectively). Fourth, not only is the p-value for \texttt{corrupt} is above $\alpha=0.05$, the direction of its coefficient, when the other variables remain constant is unexpected. According to these results, as more respondents believe there is an increase in government corruption, feelings toward the PRD slightly decrease. Finally, in regards to the personal characteristics of the respondents, the variable \texttt{female} had a p-value below $\alpha=0.01$ (0.005), with female respondents less likely to express support for the PRD, holding all other variables constant. The variable \texttt{ses} had a p-value of approximately 0.002, with more "well-off" respondents less likely to express support for the PRD, when all other variables remain constant. Finally, \texttt{churchatt} is statistically insignificant, with a p-value well over $\alpha=0.05$, with church attenders more likely to support the PRD than non-church attenders, holding all other variables constant.
 
 \item Based on this model, which variable had the strongest estimated effect on respondents' feelings toward the PRD?  \\
 
