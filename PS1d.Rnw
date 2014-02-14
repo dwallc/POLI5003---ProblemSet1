@@ -73,6 +73,7 @@ mex.range.2sd
 sd2.effects <- mex.range.2sd * m2$coef[2:10]
 sd2.effects
 @
+If you guys want to go with max effect strategy, we might need to simulate the result.
 
 \end{enumerate}
 \end{document}
