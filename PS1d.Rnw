@@ -59,6 +59,7 @@ The test restult supports the hypothesis. Those who feel positively toward PAN t
 
 \item Based on this model, which variable had the strongest estimated effect on respondents' feelings toward the PRD?  \\
 
+
 <<label=Answer4>>=
 # Calculating maximum effects via range
 mex.range <- apply(mex[,c(2,6:13)], 2, function(x) max(x) - min(x))
